@@ -1,0 +1,5 @@
+﻿  main.cpp
+C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\timeLine.h(32,26): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\timeLine.h(32,20): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\main.cpp(48,43): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+  Timer.vcxproj -> C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\x64\Debug\Timer.exe
