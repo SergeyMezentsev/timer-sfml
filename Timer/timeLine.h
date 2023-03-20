@@ -86,6 +86,15 @@ public:
 		return cnt;
 	}
 
+	void setCntToZero()
+	{
+		cnt = 0;
+		numberText.str("");
+		numberText.clear();
+		numberText << 0 << 0;
+		text.setString(numberText.str());
+	}
+
 	void Show()
 	{
 		window.draw(text);
