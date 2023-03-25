@@ -52,14 +52,13 @@ public:
 			return false;
 	}
 
-	sf::Vector2f getSpritePosAsVector()
+	void setPosition(float newPosX, float newPosY)
 	{
-		return sprite.getPosition();
+		sprite.setPosition(newPosX, newPosY);
 	}
 
-	void show( sf::Vector2f vector)
+	void show()
 	{
-		sprite.setPosition(vector);
 		window.draw(sprite);
 	}
 };

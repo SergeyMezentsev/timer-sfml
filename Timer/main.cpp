@@ -22,7 +22,7 @@ int main()
 	button stopButton("images/stop.png", 60, 60, 45, 400);
 
 
-
+	
 	sf::Clock clock;
 	sf::Int32  time = 0;
 	sf::Int32 pausedTimeInMilliseconds = 0;
@@ -30,7 +30,10 @@ int main()
 
 
 
-	bool timerIsCounting = false;
+	//bool timerIsCounting = false;
+
+	enum { timerIsStopped, timerIsPaused, timerIsCounting} stateTimer;
+	stateTimer = timerIsStopped;
 	
 	
 	while (window.isOpen())
@@ -44,7 +47,7 @@ int main()
 				window.close();
 			
 
-			if (!timerIsCounting)
+			if (stateTimer == timerIsStopped)
 			{
 				seconds.checkForMouseWheelSpinning();
 				minutes.checkForMouseWheelSpinning();
@@ -54,35 +57,38 @@ int main()
 
 	
 
-		if (playButton.isClicked() && !timerIsCounting)
+		if (playButton.isClicked() && (stateTimer == timerIsStopped || stateTimer == timerIsPaused) )
 		{
 			if (hours.getCnt() == 0 && minutes.getCnt() == 0 && seconds.getCnt() == 0)
-			{timerIsCounting = false;}
+			{ stateTimer == timerIsStopped; }
 			else
-			{timerIsCounting = true;}
-
-
-			time = clock.getElapsedTime().asMilliseconds() - pausedTimeInMilliseconds;
+			{
+				sf::sleep(sf::milliseconds(100));
+				stateTimer = timerIsCounting;
+				time = clock.getElapsedTime().asMilliseconds() - pausedTimeInMilliseconds;
+			}
 		}
-		else if (pauseButton.isClicked() && timerIsCounting)
+		else if (pauseButton.isClicked() && stateTimer == timerIsCounting)
 		{
-			timerIsCounting = false;
+			sf::sleep(sf::milliseconds(100));
+			stateTimer = timerIsPaused;
 			pausedTimeInMilliseconds = clock.getElapsedTime().asMilliseconds() - time;
 
 		}
-		else if (stopButton.isClicked() && timerIsCounting)
+		else if (stopButton.isClicked() && ( stateTimer == timerIsCounting || stateTimer == timerIsPaused) )
 		{
 			seconds.setCntToZero();
 			minutes.setCntToZero();
 			hours.setCntToZero();
-			timerIsCounting = false;
+			stateTimer = timerIsStopped;
+			pausedTimeInMilliseconds = 0;
 		}
 		
 		
 
 
 
-		if (timerIsCounting && (clock.getElapsedTime().asMilliseconds() - time > 1000) )
+		if (stateTimer == timerIsCounting && (clock.getElapsedTime().asMilliseconds() - time > 1000) )
 		{
 			time = clock.getElapsedTime().asMilliseconds();
 			seconds.decrement();
@@ -96,7 +102,7 @@ int main()
 			}
 			if (hours.getCnt() == 0 && minutes.getCnt() == 0 && seconds.getCnt() == 0)
 			{
-				timerIsCounting = false;
+				stateTimer = timerIsStopped;
 			}
 
 		}
@@ -106,6 +112,35 @@ int main()
 
 		window.clear();
 
+		switch (stateTimer)
+		{
+			case timerIsStopped:
+				playButton.setPosition(120, 400);
+				playButton.show();
+				break;
+			case timerIsCounting:
+				stopButton.show();
+				pauseButton.show();
+				break;
+			case timerIsPaused:
+				playButton.setPosition(195, 400);
+				playButton.show();
+				stopButton.show();
+				break;
+		}
+
+		seconds.Show();
+		minutes.Show();
+		hours.Show();
+		window.display();
+
+
+
+
+
+
+
+		/*
 		if(timerIsCounting)
 		{
 			stopButton.show();
@@ -118,6 +153,7 @@ int main()
 		minutes.Show();
 		hours.Show();
 		window.display();
+		*/
 	}
 	return 0;
 }
