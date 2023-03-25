@@ -1,8 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include "timeLine.h"
 #include "button.h"
+#include "music.h"
 
-#pragma warning(disable : 4996)
 
 sf::RenderWindow window(sf::VideoMode(300, 500), "Timer");
 sf::Event event;
@@ -21,6 +21,11 @@ int main()
 	button pauseButton("images/pause.png", 60, 60, 195, 400);
 	button stopButton("images/stop.png", 60, 60, 45, 400);
 
+	music endMusic("melody.ogg");
+
+	timeLine endText("Opel Sans Bold.ttf", 30, 100);
+	endText.setTextAndSize("Time is over!", 40);
+
 
 	
 	sf::Clock clock;
@@ -29,7 +34,7 @@ int main()
 
 
 
-	enum { timerIsStopped, timerIsPaused, timerIsCounting} stateTimer;
+	enum { timerIsStopped, timerIsPaused, timerIsCounting, timerIsOutOfTime} stateTimer;
 	stateTimer = timerIsStopped;
 	
 	
@@ -72,13 +77,15 @@ int main()
 			pausedTimeInMilliseconds = clock.getElapsedTime().asMilliseconds() - time;
 
 		}
-		else if (stopButton.isClicked() && ( stateTimer == timerIsCounting || stateTimer == timerIsPaused) )
+		else if (stopButton.isClicked() && ( stateTimer == timerIsCounting || stateTimer == timerIsPaused || stateTimer == timerIsOutOfTime) )
 		{
 			seconds.setCntToZero();
 			minutes.setCntToZero();
 			hours.setCntToZero();
 			stateTimer = timerIsStopped;
 			pausedTimeInMilliseconds = 0;
+
+			if (endMusic.checkMusicIsPlaying()) endMusic.stop();
 		}
 		
 		
@@ -99,7 +106,8 @@ int main()
 			}
 			if (hours.getCnt() == 0 && minutes.getCnt() == 0 && seconds.getCnt() == 0)
 			{
-				stateTimer = timerIsStopped;
+				stateTimer = timerIsOutOfTime;
+				endMusic.play();
 			}
 
 		}
@@ -116,13 +124,20 @@ int main()
 				playButton.show();
 				break;
 			case timerIsCounting:
+				stopButton.setPosition(45, 400);
 				stopButton.show();
 				pauseButton.show();
 				break;
 			case timerIsPaused:
 				playButton.setPosition(195, 400);
+				stopButton.setPosition(45, 400);
 				playButton.show();
 				stopButton.show();
+				break;
+			case timerIsOutOfTime:
+				stopButton.setPosition(120, 400);
+				stopButton.show();
+				endText.Show();
 				break;
 		}
 

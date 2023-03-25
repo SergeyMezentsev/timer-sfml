@@ -1,7 +1,7 @@
 ﻿  main.cpp
-C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\timeLine.h(32,26): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\timeLine.h(32,20): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\timeLine.h(28,26): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\timeLine.h(28,20): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
 C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\button.h(33,28): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
 C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\button.h(33,22): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\main.cpp(60,17): warning C4553: "==": результат выражения не используется; вы хотели использовать "="?
+C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\main.cpp(66,17): warning C4553: "==": результат выражения не используется; вы хотели использовать "="?
   Timer.vcxproj -> C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\x64\Debug\Timer.exe

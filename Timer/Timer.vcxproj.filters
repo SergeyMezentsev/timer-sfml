@@ -26,5 +26,8 @@
     <ClInclude Include="button.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="music.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

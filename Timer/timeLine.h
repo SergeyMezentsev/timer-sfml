@@ -19,12 +19,8 @@ class timeLine
 public:
 	timeLine(sf::String fontFilePath, int posX, int posY)
 	{
-		if (!font.loadFromFile(fontFilePath))
-		{
-			std::cout << "No fonts found\n";
-			return;
-		}
-
+		
+		font.loadFromFile(fontFilePath);
 		text.setFont(font);
 		text.setCharacterSize(60);
 		text.setStyle(sf::Text::Bold);
@@ -93,6 +89,15 @@ public:
 		numberText.clear();
 		numberText << 0 << 0;
 		text.setString(numberText.str());
+	}
+
+	void setTextAndSize(sf::String newText, int size)
+	{
+		numberText.str("");
+		numberText.clear();
+		numberText << (std::string)newText;
+		text.setString(numberText.str());
+		text.setCharacterSize(size);
 	}
 
 	void Show()
