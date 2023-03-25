@@ -16,6 +16,7 @@ class button
 	sf::Sprite sprite;
 
 
+
 public:
 	button(sf::String picturePath, int _width, int _height, int posX, int posY)
 	{
@@ -51,9 +52,14 @@ public:
 			return false;
 	}
 
-
-	void show()
+	sf::Vector2f getSpritePosAsVector()
 	{
+		return sprite.getPosition();
+	}
+
+	void show( sf::Vector2f vector)
+	{
+		sprite.setPosition(vector);
 		window.draw(sprite);
 	}
 };

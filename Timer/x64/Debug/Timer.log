@@ -1,6 +1,10 @@
 ﻿  main.cpp
 C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\timeLine.h(32,26): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
 C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\timeLine.h(32,20): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\button.h(55): error C2648: button::sprite: член должен быть статическим для использования в качестве параметра по умолчанию
+C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\button.h(16,13): message : см. объявление "button::sprite"
+C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\button.h(55): error C2355: "this": может указываться только в нестатических членах-функциях или инициализаторах нестатических членов данных
 C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\button.h(32,28): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
 C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\button.h(32,22): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-  Timer.vcxproj -> C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\x64\Debug\Timer.exe
+C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\button.h(57,28): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\user\OneDrive - УрФУ\Рабочий стол\prog\C++\SFML\Timer\Timer\button.h(57,22): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных

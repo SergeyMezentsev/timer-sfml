@@ -24,8 +24,8 @@ int main()
 
 
 	sf::Clock clock;
-	unsigned int time = 0;
-	unsigned int pausedTimeInMilliseconds = 0;
+	sf::Int32  time = 0;
+	sf::Int32 pausedTimeInMilliseconds = 0;
 
 
 
@@ -62,13 +62,12 @@ int main()
 			{timerIsCounting = true;}
 
 
-			clock.restart();
-			time = clock.getElapsedTime().asMilliseconds() + pausedTimeInMilliseconds;
+			time = clock.getElapsedTime().asMilliseconds() - pausedTimeInMilliseconds;
 		}
 		else if (pauseButton.isClicked() && timerIsCounting)
 		{
 			timerIsCounting = false;
-			pausedTimeInMilliseconds = clock.getElapsedTime().asMilliseconds() % 1000;
+			pausedTimeInMilliseconds = clock.getElapsedTime().asMilliseconds() - time;
 
 		}
 		else if (stopButton.isClicked() && timerIsCounting)
