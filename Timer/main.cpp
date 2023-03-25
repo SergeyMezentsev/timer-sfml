@@ -29,9 +29,6 @@ int main()
 
 
 
-
-	//bool timerIsCounting = false;
-
 	enum { timerIsStopped, timerIsPaused, timerIsCounting} stateTimer;
 	stateTimer = timerIsStopped;
 	
@@ -134,26 +131,6 @@ int main()
 		hours.Show();
 		window.display();
 
-
-
-
-
-
-
-		/*
-		if(timerIsCounting)
-		{
-			stopButton.show();
-			pauseButton.show();
-		}
-		else
-			playButton.show();
-
-		seconds.Show();
-		minutes.Show();
-		hours.Show();
-		window.display();
-		*/
 	}
 	return 0;
 }
