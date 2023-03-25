@@ -3,12 +3,8 @@
 #include "button.h"
 #include "music.h"
 
-
 sf::RenderWindow window(sf::VideoMode(300, 500), "Timer");
 sf::Event event;
-
-
-
 
 int main()
 {
@@ -23,17 +19,17 @@ int main()
 
 	music endMusic("melody.ogg");
 
+	// Text to print it at the end when the time is gone
 	timeLine endText("Opel Sans Bold.ttf", 30, 100);
 	endText.setTextAndSize("Time is over!", 40);
-
-
 	
 	sf::Clock clock;
 	sf::Int32  time = 0;
 	sf::Int32 pausedTimeInMilliseconds = 0;
+	// pausedTimeInMilliseconds needed to remember the time passed after the latest click on pause
+	// this difference is used when we start timer after pause again to show and change seconds correctly
 
-
-
+	// set of different sets of needed buttons
 	enum { timerIsStopped, timerIsPaused, timerIsCounting, timerIsOutOfTime} stateTimer;
 	stateTimer = timerIsStopped;
 	
@@ -41,14 +37,12 @@ int main()
 	while (window.isOpen())
 	{
 
-
 		while (window.pollEvent(event))
 		{
-			
 			if (event.type == sf::Event::Closed)
 				window.close();
 			
-
+			// Blocks timeLines of seconds, minutes and hours when the timer is counting or paused
 			if (stateTimer == timerIsStopped)
 			{
 				seconds.checkForMouseWheelSpinning();
@@ -57,8 +51,7 @@ int main()
 			}
 		}
 
-	
-
+		// Main Handler of clicks on the buttons
 		if (playButton.isClicked() && (stateTimer == timerIsStopped || stateTimer == timerIsPaused) )
 		{
 			if (hours.getCnt() == 0 && minutes.getCnt() == 0 && seconds.getCnt() == 0)
@@ -75,7 +68,6 @@ int main()
 			sf::sleep(sf::milliseconds(100));
 			stateTimer = timerIsPaused;
 			pausedTimeInMilliseconds = clock.getElapsedTime().asMilliseconds() - time;
-
 		}
 		else if (stopButton.isClicked() && ( stateTimer == timerIsCounting || stateTimer == timerIsPaused || stateTimer == timerIsOutOfTime) )
 		{
@@ -88,10 +80,8 @@ int main()
 			if (endMusic.checkMusicIsPlaying()) endMusic.stop();
 		}
 		
-		
-
-
-
+		// Counter that allows to switch seconds using Clock object to check passing every second
+		// Also it executes all logic of switchin hours, minutes and seconds
 		if (stateTimer == timerIsCounting && (clock.getElapsedTime().asMilliseconds() - time > 1000) )
 		{
 			time = clock.getElapsedTime().asMilliseconds();
@@ -112,9 +102,7 @@ int main()
 
 		}
 
-
-
-
+		// This part manages different sets of buttons at different timer states
 		window.clear();
 
 		switch (stateTimer)

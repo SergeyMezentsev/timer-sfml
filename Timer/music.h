@@ -1,7 +1,7 @@
 #pragma once
-
 #include <SFML/Audio.hpp>
 
+// This file allows to connect new music easilly using class
 
 class music
 {
@@ -30,6 +30,7 @@ public:
 		musicIsPlaying = false;
 	}
 
+	// This function needed to check if the music is playing in the main function
 	bool checkMusicIsPlaying()
 	{
 		return musicIsPlaying;
