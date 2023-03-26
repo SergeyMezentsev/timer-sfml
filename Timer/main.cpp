@@ -9,18 +9,18 @@ sf::Event event;
 int main()
 {
 	
-	timeLine seconds("Opel Sans Bold.ttf", 209, 200);
-	timeLine minutes("Opel Sans Bold.ttf", 115, 200);
-	timeLine hours("Opel Sans Bold.ttf", 22, 200);
+	timeLine seconds("fonts/Opel Sans Bold.ttf", 209, 200);
+	timeLine minutes("fonts/Opel Sans Bold.ttf", 115, 200);
+	timeLine hours("fonts/Opel Sans Bold.ttf", 22, 200);
 
 	button playButton("images/play.png", 60, 60, 120, 400);
 	button pauseButton("images/pause.png", 60, 60, 195, 400);
 	button stopButton("images/stop.png", 60, 60, 45, 400);
 
-	music endMusic("melody.ogg");
+	music endMusic("music/melody.ogg");
 
 	// Text to print it at the end when the time is gone
-	timeLine endText("Opel Sans Bold.ttf", 30, 100);
+	timeLine endText("fonts/Opel Sans Bold.ttf", 30, 100);
 	endText.setTextAndSize("Time is over!", 40);
 	
 	sf::Clock clock;
